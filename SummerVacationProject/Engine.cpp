@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "Engine.h"
+#include "AnimationObject.h"
 
 Engine::Engine()
 {
@@ -22,6 +23,8 @@ void Engine::Init()
 	Image icon;
 	icon.loadFromFile("Textures/BMO_icon.png");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+
+	obj = new AnimationObject; // -> AnimationObject생성 -> AnimationObject.cpp에서 생성자에서 Init실행 -> 애니메이션 나옴
 
 }
 
@@ -95,8 +98,13 @@ void Engine::Input()
 void Engine::Update()
 {
 	
+
 	// 시간도 update해야함
 	deltaTime = timer.getElapsedTime().asSeconds();
+
+	obj->Update(deltaTime);
+
+	timer.restart();
 
 	// input은 매프레임 실행되기때문에 update의 일부분
 	Input();
@@ -109,6 +117,7 @@ void Engine::Render()
 	{
 		window->clear();
 		Update();
+		window->draw(*obj);
 		window->display();
 	}
 }
