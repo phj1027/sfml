@@ -18,6 +18,11 @@ void Engine::Init()
 	this->window = new RenderWindow(VideoMode(500,500),"Window");
 	// this는 현재 작성하고있는 Engine을 의미함 == Engine의 window
 
+	// 윈도우창 아이콘 꾸미기
+	Image icon;
+	icon.loadFromFile("Textures/BMO_icon.png");
+	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+
 }
 
 void Engine::Destroy()
