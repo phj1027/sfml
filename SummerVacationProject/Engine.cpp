@@ -47,6 +47,20 @@ void Engine::Input()
 			window->close();
 			break;
 		}
+		// 키보드 이벤트
+		case Event::KeyPressed: // 한번입력할때 한번실행 -> 스킬쓸때 활용
+		{
+			switch (evt.key.code)
+			{
+			case Keyboard::A: // A 입력받았다면
+			{
+				cout << "Pressed A key!!\n";
+				break;
+			}
+			default:
+				break;
+			}
+		}
 		default:
 			break;
 		}
@@ -57,6 +71,11 @@ void Engine::Input()
 	{
 		window->close();
 	}
+	//else if (Keyboard::isKeyPressed(Keyboard::A)) // 프레임마다 계속 눌려있는지 확인 -> 실시간으로 이동할때 활용
+	//{
+	//	cout << "Pressed A key!!\n"; //1초에 몇십프레임씩 움직이기때문에 한번만 입력해도 여러번 출력됨
+	//}
+
 
 	// Mouse Input
 	if (Mouse::isButtonPressed(Mouse::Left))
