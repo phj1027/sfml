@@ -16,12 +16,12 @@ void Engine::Init()
 {
 	// 현재 window 변수는 포인터로 존재함
 
-	this->window = new RenderWindow(VideoMode(500,500),"Window");
+	this->window = new RenderWindow(VideoMode(1000,600),"Window");
 	// this는 현재 작성하고있는 Engine을 의미함 == Engine의 window
 
 	// 윈도우창 아이콘 꾸미기
 	Image icon;
-	icon.loadFromFile("Textures/BMO_icon.png");
+	icon.loadFromFile("Textures/Cinnamon_Bun_icon.png");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
 	obj = new AnimationObject; // -> AnimationObject생성 -> AnimationObject.cpp에서 생성자에서 Init실행 -> 애니메이션 나옴

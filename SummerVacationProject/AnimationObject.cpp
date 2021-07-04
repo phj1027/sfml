@@ -24,6 +24,9 @@ void AnimationObject::Init()
 		this->vAnimation.push_back(tx);
 	}
 
+	setScale(2.f,2.f); 
+	setPosition(Vector2f(250.f, 250.f));
+	setOrigin(tx->getSize().x / 2.f, tx->getSize().y / 2.f);
 }
 
 void AnimationObject::Destroy()
