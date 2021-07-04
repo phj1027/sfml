@@ -23,6 +23,9 @@ void Engine::Init()
 	icon.loadFromFile("Textures/BMO_icon.png");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
+	// 여러 set기능들 살펴보기
+	window->setMouseCursorVisible(true); // 마우스커서 보이게 하는 법 - false로 하면 커서 숨길 수 있음
+
 }
 
 void Engine::Destroy()
