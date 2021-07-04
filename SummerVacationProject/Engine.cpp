@@ -24,8 +24,10 @@ void Engine::Init()
 	icon.loadFromFile("Textures/Cinnamon_Bun_icon.png");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
-	obj = new AnimationObject; // -> AnimationObject생성 -> AnimationObject.cpp에서 생성자에서 Init실행 -> 애니메이션 나옴
-
+	AnimationObject* obj1 = new AnimationObject;
+	obj.push_back(new AnimationObject);
+	obj1->setPosition(100.f, 250.f);
+	obj.push_back(obj1);
 }
 
 void Engine::Destroy()
@@ -79,7 +81,6 @@ void Engine::Input()
 	//	cout << "Pressed A key!!\n"; //1초에 몇십프레임씩 움직이기때문에 한번만 입력해도 여러번 출력됨
 	//}
 
-
 	// Mouse Input
 	if (Mouse::isButtonPressed(Mouse::Left))
 	{
@@ -97,12 +98,13 @@ void Engine::Input()
 
 void Engine::Update()
 {
-	
-
 	// 시간도 update해야함
 	deltaTime = timer.getElapsedTime().asSeconds();
 
-	obj->Update(deltaTime);
+	for (auto& o : obj)
+	{
+		o->Update(deltaTime);
+	}
 
 	timer.restart();
 
@@ -112,12 +114,16 @@ void Engine::Update()
 
 void Engine::Render()
 {
-
 	while (window->isOpen())
 	{
 		window->clear();
 		Update();
-		window->draw(*obj);
+
+		for (auto& o : obj)
+		{
+			window->draw(*o);
+		}
+		
 		window->display();
 	}
 }

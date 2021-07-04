@@ -23,7 +23,7 @@ private: // 멤버 변수
 	Clock timer;
 	float deltaTime = 0.f; // 엔진에서 deltaTime가지고 모든 오브젝트를 시간에 맞게 정해줄것
 
-	AnimationObject* obj = nullptr;
+	vector<AnimationObject*> obj;
 
 private: // 메소드
 
