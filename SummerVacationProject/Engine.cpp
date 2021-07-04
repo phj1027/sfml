@@ -52,6 +52,13 @@ void Engine::Input()
 		}
 	}
 
+	// keyBoardInput
+	if (Keyboard::isKeyPressed(Keyboard::Escape)) // esc버튼 입력시 윈도우 창 닫힘
+	{
+		window->close();
+	}
+
+	// Mouse Input
 	if (Mouse::isButtonPressed(Mouse::Left))
 	{
 		window->setTitle("Left Click");
