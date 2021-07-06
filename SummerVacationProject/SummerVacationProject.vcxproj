@@ -142,7 +142,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnimationObject.cpp" />
+    <ClCompile Include="BigZombie.cpp" />
+    <ClCompile Include="Character.cpp" />
+    <ClCompile Include="Enemies.cpp" />
+    <ClCompile Include="Engine.cpp" />
+    <ClCompile Include="SignMonster.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Object.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AnimationObject.h" />
+    <ClInclude Include="BigZombie.h" />
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="Enemies.h" />
+    <ClInclude Include="Engine.h" />
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="SignMonster.h" />
+    <ClInclude Include="Object.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

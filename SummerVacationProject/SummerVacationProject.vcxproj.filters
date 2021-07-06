@@ -13,10 +13,93 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\01. Engine">
+      <UniqueIdentifier>{4a93c67d-0ac0-4c99-92db-34d04c833020}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\00. Main">
+      <UniqueIdentifier>{a08c9107-83fe-4dff-91aa-3989991c3903}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object">
+      <UniqueIdentifier>{bc7418a1-3126-485b-ba81-9e336ed2ce67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\00. Object">
+      <UniqueIdentifier>{e59a9ce2-c739-436b-8728-91c253b5ad14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\01. AnimationObject">
+      <UniqueIdentifier>{f4003c12-05f4-4db2-a332-dbbd559fdfa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\01. AnimationObject\00. AnimationObject">
+      <UniqueIdentifier>{1b0fa6e5-5fd1-4d85-97b2-585ac4713cdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99. Common">
+      <UniqueIdentifier>{7893103d-ed5e-4db7-8474-fd1624e423ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\01. AnimationObject\01. Character">
+      <UniqueIdentifier>{07390fa3-dc54-4f1e-8a30-e200cee978dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\01. AnimationObject\02. Enemies">
+      <UniqueIdentifier>{ccae28ca-3343-4af1-92aa-bbf0997fe00d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\01. AnimationObject\02. Enemies\00. Enemies">
+      <UniqueIdentifier>{a57a3474-c5cd-41bb-8ca6-d16e4fd5e624}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\01. AnimationObject\02. Enemies\02. BigZombie">
+      <UniqueIdentifier>{811e7f76-1a8f-48c1-ad66-d835f0e74b31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\01. AnimationObject\02. Enemies\01. SignMonster">
+      <UniqueIdentifier>{124cb7ab-10ae-4f4f-aef1-f7186198282b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="Engine.cpp">
+      <Filter>소스 파일\01. Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>소스 파일\03. Object\00. Object</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationObject.cpp">
+      <Filter>소스 파일\03. Object\01. AnimationObject\00. AnimationObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>소스 파일\03. Object\01. AnimationObject\01. Character</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일\00. Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemies.cpp">
+      <Filter>소스 파일\03. Object\01. AnimationObject\02. Enemies\00. Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="SignMonster.cpp">
+      <Filter>소스 파일\03. Object\01. AnimationObject\02. Enemies\01. SignMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="BigZombie.cpp">
+      <Filter>소스 파일\03. Object\01. AnimationObject\02. Enemies\02. BigZombie</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Engine.h">
+      <Filter>소스 파일\01. Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>소스 파일\03. Object\00. Object</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationObject.h">
+      <Filter>소스 파일\03. Object\01. AnimationObject\00. AnimationObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>소스 파일\03. Object\01. AnimationObject\01. Character</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>소스 파일\99. Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemies.h">
+      <Filter>소스 파일\03. Object\01. AnimationObject\02. Enemies\00. Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="SignMonster.h">
+      <Filter>소스 파일\03. Object\01. AnimationObject\02. Enemies\01. SignMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="BigZombie.h">
+      <Filter>소스 파일\03. Object\01. AnimationObject\02. Enemies\02. BigZombie</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

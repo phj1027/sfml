@@ -2,15 +2,15 @@
 // 헤더파일 - 라이브러리가 들어가는 곳
 // 정규라이브러리를 포함 ex) <stdio.h>
 
+#define _CRT_SECURE_NO_WARNINGS
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
 
-#define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
-#include <vector>
 #include <map>
+#include <vector>
 
 using namespace std;
 

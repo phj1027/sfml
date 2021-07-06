@@ -1,0 +1,33 @@
+6/21
+마크다운 문법 : https://heropy.blog/2017/09/30/markdown/
+
+<sfml 환경설정>
+구성: 디버그,32비트 활성
+
+구성속성 >> 디버깅 >> 환경
+ path=$(SolutionDir)\External\bin;%PATH%
+
+링커 >> 입력
+sfml-graphics-d.lib
+sfml-audio-d.lib
+sfml-network-d.lib
+sfml-window-d.lib
+sfml-system-d.lib
+
+구성 속성 >> VC++ 디렉터리 >> 라이브러리 디렉터리
+$(SolutionDir)\External\lib
+
+구성 속성 >> VC++ 디렉터리 >> 포함 디렉터리
+$(SolutionDir)\External\include
+
+SFML파일들 솔루션 파일하고 같은 폴더에 넣기
+bin(binary)
+include(hpp)
+lib(lib)
+이상 세 개의 파일을 External파일에 넣기
+
+<class>
+class = = 하나의 객체 => 행동을 할수있음
+행동== method == 함수 
+
+class마다 하는 일을 정해줘야함 

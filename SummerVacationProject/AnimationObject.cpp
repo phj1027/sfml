@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include "framework.h"
 #include "AnimationObject.h"
 
@@ -9,28 +8,22 @@ AnimationObject::AnimationObject()
 
 AnimationObject::~AnimationObject()
 {
+
 }
 
 void AnimationObject::Init()
 {
-	Texture* tx = nullptr;
-
-	char filePath[150];
-	for (int i = 1; i < 27; ++i)
-	{
-		sprintf(filePath, "Textures/Adventure Time with Finn and Jake/Finn&Jake/Finn&Jake_Idle_Eyes1~27/Finn&Jake_Idle_Eyes_(%d).png", i);
-		tx = new Texture;
-		tx->loadFromFile(filePath);
-		this->vAnimation.push_back(tx);
-	}
-
-	setScale(2.f,2.f); 
-	setPosition(Vector2f(250.f, 250.f));
-	setOrigin(tx->getSize().x / 2.f, tx->getSize().y / 2.f);
+	
 }
 
 void AnimationObject::Destroy()
 {
+	for (auto& i : vAnimation)
+	{
+		delete i;
+	}
+	
+	vAnimation.clear();
 }
 
 void AnimationObject::Update(const float& deltaTime)

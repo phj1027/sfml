@@ -1,6 +1,8 @@
 #include "framework.h"
 #include "Engine.h"
-#include "AnimationObject.h"
+#include "Character.h"
+#include "SignMonster.h"
+#include "BigZombie.h"
 
 Engine::Engine()
 {
@@ -16,18 +18,19 @@ void Engine::Init()
 {
 	// 현재 window 변수는 포인터로 존재함
 
-	this->window = new RenderWindow(VideoMode(1000,600),"Window");
+	this->window = new RenderWindow(VideoMode(1000,600),"Adventure Time with Finn and Jake");
 	// this는 현재 작성하고있는 Engine을 의미함 == Engine의 window
+
+	window->setMouseCursorVisible(true); // 마우스 커서 보이게 설정
 
 	// 윈도우창 아이콘 꾸미기
 	Image icon;
 	icon.loadFromFile("Textures/Cinnamon_Bun_icon.png");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
-	AnimationObject* obj1 = new AnimationObject;
-	obj.push_back(new AnimationObject);
-	obj1->setPosition(100.f, 250.f);
-	obj.push_back(obj1);
+	obj.push_back(new Character);
+	obj.push_back(new SignMonster);
+	obj.push_back(new BigZombie);
 }
 
 void Engine::Destroy()
@@ -81,6 +84,7 @@ void Engine::Input()
 	//	cout << "Pressed A key!!\n"; //1초에 몇십프레임씩 움직이기때문에 한번만 입력해도 여러번 출력됨
 	//}
 
+
 	// Mouse Input
 	if (Mouse::isButtonPressed(Mouse::Left))
 	{
@@ -92,7 +96,7 @@ void Engine::Input()
 	}
 	else
 	{
-		window->setTitle("Window");
+		window->setTitle("Adventure Time with Finn and Jake");
 	}
 }
 
