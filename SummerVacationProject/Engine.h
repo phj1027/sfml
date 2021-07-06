@@ -1,8 +1,6 @@
 #pragma once
 
-// 전방선언 
-class AnimationObject;
-
+class Scene;
 
 // 게임 전체를 이르는 클래스 - 게임 런처,클라이언트 같은것 이거없으면 실행이 되지않음
 class Engine final // final : 더이상 이 클레스에게 상속받지 않는다.
@@ -23,7 +21,7 @@ private: // 멤버 변수
 	Clock timer;
 	float deltaTime = 0.f; // 엔진에서 deltaTime가지고 모든 오브젝트를 시간에 맞게 정해줄것
 
-	vector<AnimationObject*> obj;
+	Scene* scene = nullptr;
 
 private: // 메소드
 

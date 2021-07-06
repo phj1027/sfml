@@ -1,8 +1,6 @@
 #include "framework.h"
 #include "Engine.h"
-#include "Character.h"
-#include "SignMonster.h"
-#include "BigZombie.h"
+#include "Scene.h"
 
 Engine::Engine()
 {
@@ -28,9 +26,8 @@ void Engine::Init()
 	icon.loadFromFile("Textures/Cinnamon_Bun_icon.png");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
-	obj.push_back(new Character);
-	obj.push_back(new SignMonster);
-	obj.push_back(new BigZombie);
+	this->scene = new Scene; 
+
 }
 
 void Engine::Destroy()
@@ -105,15 +102,13 @@ void Engine::Update()
 	// 시간도 update해야함
 	deltaTime = timer.getElapsedTime().asSeconds();
 
-	for (auto& o : obj)
-	{
-		o->Update(deltaTime);
-	}
-
+	
 	timer.restart();
 
 	// input은 매프레임 실행되기때문에 update의 일부분
 	Input();
+
+	this->scene->Update(deltaTime);
 }
 
 void Engine::Render()
@@ -123,10 +118,7 @@ void Engine::Render()
 		window->clear();
 		Update();
 
-		for (auto& o : obj)
-		{
-			window->draw(*o);
-		}
+		scene->Render(window);
 		
 		window->display();
 	}

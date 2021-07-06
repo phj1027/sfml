@@ -49,6 +49,12 @@
     <Filter Include="소스 파일\03. Object\01. AnimationObject\02. Enemies\01. SignMonster">
       <UniqueIdentifier>{124cb7ab-10ae-4f4f-aef1-f7186198282b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\02. Scene">
+      <UniqueIdentifier>{a397069c-a376-47c8-8db9-ce37c068760a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\00. Scene">
+      <UniqueIdentifier>{b58242c8-262a-4b20-96cc-cc54ccb198cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -75,6 +81,9 @@
     <ClCompile Include="BigZombie.cpp">
       <Filter>소스 파일\03. Object\01. AnimationObject\02. Enemies\02. BigZombie</Filter>
     </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>소스 파일\02. Scene\00. Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -100,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="BigZombie.h">
       <Filter>소스 파일\03. Object\01. AnimationObject\02. Enemies\02. BigZombie</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>소스 파일\02. Scene\00. Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
