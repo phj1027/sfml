@@ -7,6 +7,11 @@ Scene::Scene()
 	Init();
 }
 
+Scene::Scene(stack<Scene*>* scenes) : scenes(scenes) // 받아오는 변수들을 자신의 멤버변수에 넣음
+{
+	Init();
+}
+
 Scene::~Scene()
 {
 

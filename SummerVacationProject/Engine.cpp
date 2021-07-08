@@ -27,8 +27,7 @@ void Engine::Init()
 	icon.loadFromFile("Textures/Cinnamon_Bun_icon.png");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
-	this->scenes.push(new CharacterScene);
-	this->scenes.push(new EnemiesScene);
+	this->scenes.push(new Scene); // 아무것도 없는 장면
 
 }
 
@@ -61,7 +60,12 @@ void Engine::Input()
 			{
 			case Keyboard::A: // A 입력받았다면
 			{
-				cout << "Pressed A key!!\n";
+				this->scenes.push(new CharacterScene); // 캐릭터 scene으로 감
+				break;
+			}
+			case Keyboard::S: // S 입력받았다면
+			{
+				this->scenes.push(new EnemiesScene); // Enemiesq scene으로 감
 				break;
 			}
 			case Keyboard::Q:

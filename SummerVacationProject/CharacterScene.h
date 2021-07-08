@@ -4,6 +4,7 @@ class CharacterScene : public Scene
 {
 public:
 	CharacterScene();
+	CharacterScene(stack<Scene*>* scenes); // scene포인터를 담고있는 stack의 포인터 
 	virtual ~CharacterScene();
 
 private:

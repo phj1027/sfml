@@ -7,6 +7,11 @@ CharacterScene::CharacterScene()
 	Init();
 }
 
+CharacterScene::CharacterScene(stack<Scene*>* scenes) : Scene(scenes)
+{
+	Init();
+}
+
 CharacterScene::~CharacterScene()
 {
 }

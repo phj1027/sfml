@@ -4,6 +4,7 @@ class EnemiesScene : public Scene
 {
 public:
 	EnemiesScene();
+	EnemiesScene(stack<Scene*>* scenes); // scene포인터를 담고있는 stack의 포인터 
 	virtual ~EnemiesScene();
 
 private:

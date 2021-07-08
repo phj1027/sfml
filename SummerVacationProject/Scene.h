@@ -6,6 +6,7 @@ class Scene // Scene은 상속받는 애들이 많음 _ 지금 마더 클래스를 만드는것
 {
 public:
 	Scene();
+	Scene(stack<Scene*>* scenes); // scene포인터를 담고있는 stack의 포인터 
 	virtual ~Scene();
 
 protected:
@@ -13,6 +14,7 @@ protected:
 	// 씬에서 오브젝트들을 관리 
 	vector<Object*> vObjects;
 				// ㄴ> 백터와 관련되어있으니까 v붙여준것 
+	stack<Scene*>* scenes;
 	bool quit = false;
 
 private:
