@@ -2,6 +2,7 @@
 #include "Engine.h"
 #include "EnemiesScene.h"
 #include "CharacterScene.h"
+#include "TitleScene.h"
 
 Engine::Engine()
 {
@@ -27,8 +28,8 @@ void Engine::Init()
 	icon.loadFromFile("Textures/Cinnamon_Bun_icon.png");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
-	this->scenes.push(new Scene); // 아무것도 없는 장면
-
+	this->scenes.push(new TitleScene(&scenes)); // 아무것도 없는 첫 장면 == titlescene
+	cout << "Title Scene\n";
 }
 
 void Engine::Destroy()
@@ -61,11 +62,13 @@ void Engine::Input()
 			case Keyboard::A: // A 입력받았다면
 			{
 				this->scenes.push(new CharacterScene); // 캐릭터 scene으로 감
+				cout << "Character Scene\n";
 				break;
 			}
 			case Keyboard::S: // S 입력받았다면
 			{
 				this->scenes.push(new EnemiesScene); // Enemiesq scene으로 감
+				cout << "Enemies Scene\n";
 				break;
 			}
 			case Keyboard::Q:
@@ -94,18 +97,18 @@ void Engine::Input()
 
 
 	// Mouse Input
-	if (Mouse::isButtonPressed(Mouse::Left))
-	{
-		window->setTitle("Left Click");
-	}
-	else if (Mouse::isButtonPressed(Mouse::Right))
-	{
-		window->setTitle("Right Click");
-	}
-	else
-	{
-		window->setTitle("Adventure Time with Finn and Jake");
-	}
+	//if (Mouse::isButtonPressed(Mouse::Left))
+	//{
+	//	window->setTitle("Left Click");
+	//}
+	//else if (Mouse::isButtonPressed(Mouse::Right))
+	//{
+	//	window->setTitle("Right Click");
+	//}
+	//else
+	//{
+	//	window->setTitle("Adventure Time with Finn and Jake");
+	//}
 }
 
 void Engine::Update()
@@ -147,8 +150,7 @@ void Engine::Render()
 		{
 			scenes.top()->Render(window);  // 맨위에있는 것을 랜더링
 		}
-		
-		
+	
 		window->display();
 	}
 }

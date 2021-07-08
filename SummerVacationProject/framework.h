@@ -7,7 +7,6 @@
 
 using namespace sf;
 
-
 #include <iostream>
 #include <map>
 #include <vector>

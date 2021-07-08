@@ -55,11 +55,20 @@
     <Filter Include="소스 파일\02. Scene\00. Scene">
       <UniqueIdentifier>{b58242c8-262a-4b20-96cc-cc54ccb198cc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\02. Scene\01. CharacterScene">
+    <Filter Include="소스 파일\02. Scene\02. CharacterScene">
       <UniqueIdentifier>{1fc7bc16-3fab-4947-897d-244da561d7e4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\02. Scene\02. EnemiesScene">
+    <Filter Include="소스 파일\02. Scene\03. EnemiesScene">
       <UniqueIdentifier>{fb84cd59-6a3e-4e49-a47c-7f23f18669bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\01. TitleScene">
+      <UniqueIdentifier>{de088719-b089-43b5-82b6-370c8fd938c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\02. BackGroundObject">
+      <UniqueIdentifier>{c560d0b7-f8a5-4b2a-bdea-a5248a83bc7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\03. Object\02. BackGroundObject\00. BackGroundObject">
+      <UniqueIdentifier>{b2217c6d-0467-48d8-a51f-8e2d08de5d4f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -91,10 +100,16 @@
       <Filter>소스 파일\02. Scene\00. Scene</Filter>
     </ClCompile>
     <ClCompile Include="CharacterScene.cpp">
-      <Filter>소스 파일\02. Scene\01. CharacterScene</Filter>
+      <Filter>소스 파일\02. Scene\02. CharacterScene</Filter>
     </ClCompile>
     <ClCompile Include="EnemiesScene.cpp">
-      <Filter>소스 파일\02. Scene\02. EnemiesScene</Filter>
+      <Filter>소스 파일\02. Scene\03. EnemiesScene</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>소스 파일\02. Scene\01. TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGroundObject.cpp">
+      <Filter>소스 파일\03. Object\02. BackGroundObject\00. BackGroundObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -110,9 +125,6 @@
     <ClInclude Include="Character.h">
       <Filter>소스 파일\03. Object\01. AnimationObject\01. Character</Filter>
     </ClInclude>
-    <ClInclude Include="framework.h">
-      <Filter>소스 파일\99. Common</Filter>
-    </ClInclude>
     <ClInclude Include="Enemies.h">
       <Filter>소스 파일\03. Object\01. AnimationObject\02. Enemies\00. Enemies</Filter>
     </ClInclude>
@@ -126,10 +138,19 @@
       <Filter>소스 파일\02. Scene\00. Scene</Filter>
     </ClInclude>
     <ClInclude Include="CharacterScene.h">
-      <Filter>소스 파일\02. Scene\01. CharacterScene</Filter>
+      <Filter>소스 파일\02. Scene\02. CharacterScene</Filter>
     </ClInclude>
     <ClInclude Include="EnemiesScene.h">
-      <Filter>소스 파일\02. Scene\02. EnemiesScene</Filter>
+      <Filter>소스 파일\02. Scene\03. EnemiesScene</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>소스 파일\99. Common</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>소스 파일\02. Scene\01. TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGroundObject.h">
+      <Filter>소스 파일\03. Object\02. BackGroundObject\00. BackGroundObject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
