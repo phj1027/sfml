@@ -1,10 +1,6 @@
 #include "framework.h" // framework는 항상 맨위에
 #include "Scene.h"
 #include "Object.h" // vector<Object*> vObjects;의 Object사용하기 위해 
-#include "Character.h"
-#include "SignMonster.h"
-#include "BigZombie.h"
-
 
 Scene::Scene()
 {
@@ -18,9 +14,17 @@ Scene::~Scene()
 
 void Scene::Init()
 {
-	vObjects.push_back(new Character);
-	vObjects.push_back(new SignMonster);
-	vObjects.push_back(new BigZombie);
+	
+}
+
+bool Scene::GetQuit() const
+{
+	return quit;
+}
+
+void Scene::EndScene()
+{
+	quit = true;
 }
 
 void Scene::Update(const float& deltaTime)

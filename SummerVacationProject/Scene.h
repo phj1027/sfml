@@ -13,12 +13,16 @@ protected:
 	// 씬에서 오브젝트들을 관리 
 	vector<Object*> vObjects;
 				// ㄴ> 백터와 관련되어있으니까 v붙여준것 
+	bool quit = false;
 
 private:
 
 	virtual void Init();
 
 public:
+
+	bool GetQuit() const;
+	void EndScene();
 
 	virtual void Update(const float& deltaTime);
 

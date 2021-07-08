@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "Engine.h"
-#include "Scene.h"
+#include "EnemiesScene.h"
+#include "CharacterScene.h"
 
 Engine::Engine()
 {
@@ -26,7 +27,8 @@ void Engine::Init()
 	icon.loadFromFile("Textures/Cinnamon_Bun_icon.png");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
-	this->scene = new Scene; 
+	this->scenes.push(new CharacterScene);
+	this->scenes.push(new EnemiesScene);
 
 }
 
@@ -60,6 +62,11 @@ void Engine::Input()
 			case Keyboard::A: // A 입력받았다면
 			{
 				cout << "Pressed A key!!\n";
+				break;
+			}
+			case Keyboard::Q:
+			{
+				scenes.top()->EndScene();
 				break;
 			}
 			default:
@@ -108,7 +115,21 @@ void Engine::Update()
 	// input은 매프레임 실행되기때문에 update의 일부분
 	Input();
 
-	this->scene->Update(deltaTime);
+	if (!scenes.empty()) // scenes가 비어있지않다면 실행해라 
+	{
+		scenes.top()->Update(deltaTime); // 맨위에있는 것을 업데이트 
+		
+		if (this->scenes.top()->GetQuit()) // 현재 실행중인 scene을 종료한다.
+		{
+			delete this->scenes.top();
+			this->scenes.pop();
+			cout << "Pop Scene\n";
+		}
+	}
+	else // 씬이 없으면 엔진만 살아있고 장면이 없기 때문에 게임 종료하기 
+	{
+		window->close();
+	}
 }
 
 void Engine::Render()
@@ -118,7 +139,11 @@ void Engine::Render()
 		window->clear();
 		Update();
 
-		scene->Render(window);
+		if (!scenes.empty()) // scenes가 비어있지않다면 실행해라 
+		{
+			scenes.top()->Render(window);  // 맨위에있는 것을 랜더링
+		}
+		
 		
 		window->display();
 	}
