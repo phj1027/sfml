@@ -57,8 +57,8 @@ void Character::Init()
 	stateAnimation[PUNCH] = punchAnimation;
 
 	setScale(2.f, 2.f);
-	setPosition(Vector2f(250.f, 250.f));
-	setOrigin(tx->getSize().x / 2.f, tx->getSize().y / 2.f);
+	setPosition(Vector2f(100.f, 100.f));
+	
 }
 
 void Character::Destroy()
@@ -66,14 +66,37 @@ void Character::Destroy()
 	AnimationObject::Destroy();
 }
 
+void Character::MoveUpdate()
+{
+	if (position.y < 200.f)
+	{
+		// 위로 점프하기 위한 것
+		velocity.y += gravity;  // 프레임마다 중력올림 -10 -> -8 -> -6 ....
+	}
+	else if (position.y > 200.f)
+	{
+		// 바닥으로 꺼지는 것을 막기 위한 것
+		position.y = 200.f;
+	}
+
+	velocity += acceleration;
+	position += velocity;
+
+}
+
 void Character::Update(const float& deltaTime)
 {
-
-	if (Keyboard::isKeyPressed(Keyboard::Space))
+	if (Keyboard::isKeyPressed(Keyboard::Space)) // 점프 제대로 실행 안됨 ★
 	{
+		// sfml 좌표계 좌상단 (0,0) (위로 올라갈수록 - 이고 아래로내려갈수록 + 오른쪽 + 왼쪽 -)
 		state = JUMP;
+		velocity.y = -10; // y축속도를 -10 줌
 	}
-	else if (Keyboard::isKeyPressed(Keyboard::Z))
+
+	MoveUpdate();
+	setPosition(position);
+
+	if (Keyboard::isKeyPressed(Keyboard::Z))
 	{
 		state = RUN;
 	}
@@ -92,40 +115,30 @@ void Character::Update(const float& deltaTime)
 
 	elapsedTime += deltaTime;
 
-	if (elapsedTime > 0.1f)
+	if (elapsedTime > 0.05f)
 	{
-		//범위기반 for문
-		// stateAnimation안에있는 객체들을 animation하나로 하나씩 불러올수있음 
+		 
 		for (auto& animation : stateAnimation)
 		{
-			//first : 현재 스테이트  -> IDLE이냐 RUN이냐 JUMP냐 PUNCH냐 WALK냐 그소리 
-			// animation -> <state(first), animationVector(second)>
-			// <key,value> == <first,second> == <RUN,runanimation> ...
+			
 			if (animation.first == state) // first가 현재 state와 같다면 
 			{
 				setTexture(*animation.second.data()[keyFrame % animation.second.size()]);
 
 				if (animation.first == PUNCH) // 스킬을 한번쓰면 원래상태로 돌아와야하니까 
 				{
-					// 애니메이션이 예를들어 IDLE같은경우 9개인데 1~9 다 돌았다면 == 애니메이션 하나가 끝났다면 ( 인덱스는 0번부터니까 -1해준것)
-					// 사이즈는 그대로 
 					if (keyFrame % animation.second.size() >= animation.second.size()-1)
 					{
 						state = IDLE;
 					}
 				}
-				if (animation.first == JUMP) 
+				if (animation.first != PUNCH)
 				{
 					if (keyFrame % animation.second.size() >= animation.second.size()-1)
 					{
 						state = IDLE;
-					}
-				}
-				if (animation.first != PUNCH || animation.first == PUNCH)
-				{
-					if (keyFrame % animation.second.size() >= animation.second.size()-1)
-					{
-						state = IDLE;
+						//punch가 아니면 꾹 눌러야만 애니메이션이 무한반복
+						// 그렇다고 punch도 코드가 똑같은데 꾹누르면 무한반복되지않고 한애니메이션장면에 멈춰있음 왜지?★
 					}
 				}
 			}

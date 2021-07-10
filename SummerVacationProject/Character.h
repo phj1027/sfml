@@ -17,6 +17,14 @@ public:
 	virtual ~Character();
 
 private:
+
+	// 점프를 위한 물리적용
+	Vector2f position{ 0.f,0.f };  // x좌표 y좌표 
+	Vector2f velocity{ 0.f,0.f };  // x축 속도 y축 속도 
+	Vector2f acceleration{ 0.f,0.f }; // x축가속도 y축가속도 
+
+	float gravity = 5.f; // 중력
+
 	//포인터로 쓰는 이유 그때그때 동적할당 해놓고 캐릭터가 사라질 시 여기서 풀어주면 되니까
 	vector<Texture*> idleAnimation;
 	vector<Texture*> walkAnimation;
@@ -37,6 +45,7 @@ private:
 
 public:
 	virtual void Destroy();
+	void MoveUpdate();
 	virtual void Update(const float& deltaTime);
 };
 
