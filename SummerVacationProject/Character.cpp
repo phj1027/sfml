@@ -14,28 +14,28 @@ void Character::Init()
 	Texture* tx = nullptr;
 
 	char filePath[150];
-	for (int i = 1; i < 9; ++i)
+	for (int i = 0; i < 9; ++i)
 	{
-		sprintf(filePath, "Textures/Adventure Time with Finn and Jake/Finn&Jake/Finn&Jake_Idle_Calm1~9/Finn&Jake_Calm_(%d).png", i);
+		sprintf(filePath, "Textures/Adventure Time with Finn and Jake/Finn&Jake/Finn&Jake_Idle_Calm1~9/Calm_(%d).png", i);
 		tx = new Texture;
 		tx->loadFromFile(filePath);
 		this->idleAnimation.push_back(tx);
 	}
-	for (int i = 1; i < 16; ++i)
+	for (int i = 0; i < 15; ++i)
 	{
 		sprintf(filePath, "Textures/Adventure Time with Finn and Jake/Finn&Jake/Finn&Jake_Walk1~16/Finn&Jake_Walk_(%d).png", i);
 		tx = new Texture;
 		tx->loadFromFile(filePath);
 		this->walkAnimation.push_back(tx);
 	}
-	for (int i = 1; i < 12; ++i)
+	for (int i = 0; i < 11; ++i)
 	{
 		sprintf(filePath, "Textures/Adventure Time with Finn and Jake/Finn&Jake/Finn&Jake_Run1~12/Finn&Jake_Run_(%d).png", i);
 		tx = new Texture;
 		tx->loadFromFile(filePath);
 		this->runAnimation.push_back(tx);
 	}
-	for (int i = 1; i < 18; ++i)
+	for (int i = 0; i < 17; ++i)
 	{
 		sprintf(filePath, "Textures/Adventure Time with Finn and Jake/Finn&Jake/Finn&Jake_Jump1~18/Jump (%d).png", i);
 		tx = new Texture;
@@ -44,7 +44,7 @@ void Character::Init()
 	}
 	for (int i = 0; i < 9; ++i)
 	{
-		sprintf(filePath, "Textures/Adventure Time with Finn and Jake/Finn&Jake/Finn&Jake_Punch1~10/Finn&Jake_Punch_(%d).png", i);
+		sprintf(filePath, "Textures/Adventure Time with Finn and Jake/Finn&Jake/Finn&Jake_Punch1~10/punch(%d).png", i);
 		tx = new Texture;
 		tx->loadFromFile(filePath);
 		this->punchAnimation.push_back(tx);
