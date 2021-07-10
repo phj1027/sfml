@@ -42,7 +42,7 @@ void Character::Init()
 		tx->loadFromFile(filePath);
 		this->jumpAnimation.push_back(tx);
 	}
-	for (int i = 1; i < 10; ++i)
+	for (int i = 0; i < 9; ++i)
 	{
 		sprintf(filePath, "Textures/Adventure Time with Finn and Jake/Finn&Jake/Finn&Jake_Punch1~10/Finn&Jake_Punch_(%d).png", i);
 		tx = new Texture;
@@ -68,7 +68,6 @@ void Character::Destroy()
 
 void Character::Update(const float& deltaTime)
 {
-	state = IDLE; // 처음 STATE는 항상 IDLE이어야하니까 (기본상태 _ 가만히있는것)
 
 	if (Keyboard::isKeyPressed(Keyboard::Space))
 	{
@@ -84,8 +83,12 @@ void Character::Update(const float& deltaTime)
 	}
 	else if (Keyboard::isKeyPressed(Keyboard::V))
 	{
+		keyFrame = 0;
 		state = PUNCH;
 	}
+
+	// 다 if로 한다면 동시에 키 입력시 뒤의것만 실행됨 
+	// else if로 하면 하나의 키만 입력받음 
 
 	elapsedTime += deltaTime;
 
@@ -101,6 +104,30 @@ void Character::Update(const float& deltaTime)
 			if (animation.first == state) // first가 현재 state와 같다면 
 			{
 				setTexture(*animation.second.data()[keyFrame % animation.second.size()]);
+
+				if (animation.first == PUNCH) // 스킬을 한번쓰면 원래상태로 돌아와야하니까 
+				{
+					// 애니메이션이 예를들어 IDLE같은경우 9개인데 1~9 다 돌았다면 == 애니메이션 하나가 끝났다면 ( 인덱스는 0번부터니까 -1해준것)
+					// 사이즈는 그대로 
+					if (keyFrame % animation.second.size() >= animation.second.size()-1)
+					{
+						state = IDLE;
+					}
+				}
+				if (animation.first == JUMP) 
+				{
+					if (keyFrame % animation.second.size() >= animation.second.size()-1)
+					{
+						state = IDLE;
+					}
+				}
+				if (animation.first != PUNCH || animation.first == PUNCH)
+				{
+					if (keyFrame % animation.second.size() >= animation.second.size()-1)
+					{
+						state = IDLE;
+					}
+				}
 			}
 		}
 		
