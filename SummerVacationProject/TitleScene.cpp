@@ -18,7 +18,7 @@ TitleScene::~TitleScene()
 
 void TitleScene::Init()
 {
-	vObjects.push_back(new BackGroundObject("Textures/Adventure Time with Finn and Jake/Background/Title_button.png"));
+	vObjects.push_back(new BackGroundObject("Textures/Adventure Time with Finn and Jake/Background/d.png"));
 }
 
 void TitleScene::Destroy()
