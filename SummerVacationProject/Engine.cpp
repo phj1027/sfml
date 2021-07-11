@@ -3,7 +3,6 @@
 #include "EnemiesScene.h"
 #include "CharacterScene.h"
 #include "TitleScene.h"
-#include "LobbyScene.h"
 
 Engine::Engine()
 {
@@ -60,7 +59,7 @@ void Engine::Input()
 		{
 			switch (evt.key.code)
 			{
-			case Keyboard::A: // A 입력받았다면
+			case Keyboard::Space: // A 입력받았다면
 			{
 				this->scenes.push(new CharacterScene); // 캐릭터 scene으로 감
 				cout << "Character Scene\n";
@@ -70,12 +69,6 @@ void Engine::Input()
 			{
 				this->scenes.push(new EnemiesScene); // Enemiesq scene으로 감
 				cout << "Enemies Scene\n";
-				break;
-			}
-			case Keyboard::D: 
-			{
-				this->scenes.push(new LobbyScene);
-				cout << "Lobby Scene\n";
 				break;
 			}
 			case Keyboard::Q:

@@ -70,9 +70,6 @@
     <Filter Include="소스 파일\03. Object\02. BackGroundObject\00. BackGroundObject">
       <UniqueIdentifier>{b2217c6d-0467-48d8-a51f-8e2d08de5d4f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\02. Scene\04. LobbyScene">
-      <UniqueIdentifier>{3ed4d20e-6c70-4cd7-bcba-35050f9caedc}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -114,9 +111,6 @@
     <ClCompile Include="BackGroundObject.cpp">
       <Filter>소스 파일\03. Object\02. BackGroundObject\00. BackGroundObject</Filter>
     </ClCompile>
-    <ClCompile Include="LobbyScene.cpp">
-      <Filter>소스 파일\02. Scene\04. LobbyScene</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -157,9 +151,6 @@
     </ClInclude>
     <ClInclude Include="BackGroundObject.h">
       <Filter>소스 파일\03. Object\02. BackGroundObject\00. BackGroundObject</Filter>
-    </ClInclude>
-    <ClInclude Include="LobbyScene.h">
-      <Filter>소스 파일\02. Scene\04. LobbyScene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
