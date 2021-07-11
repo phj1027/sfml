@@ -30,3 +30,7 @@ void CharacterScene::Render(RenderWindow* window)
 {
 	Scene::Render(window);
 }
+
+void CharacterScene::Input(Event* e)
+{
+}

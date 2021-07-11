@@ -70,6 +70,21 @@
     <Filter Include="소스 파일\03. Object\02. BackGroundObject\00. BackGroundObject">
       <UniqueIdentifier>{b2217c6d-0467-48d8-a51f-8e2d08de5d4f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\02. Scene\04. TutorialScene">
+      <UniqueIdentifier>{85799249-53d1-475a-9341-b178dafba83c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\05. FirstStageScene">
+      <UniqueIdentifier>{21181699-2f3d-4064-b06e-41c8c280adf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\06. SecondStageScene">
+      <UniqueIdentifier>{b83b7dd9-bd34-4610-8ddd-8cea039b7de7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\07. ResultScene">
+      <UniqueIdentifier>{e818eecf-fecc-4d80-bf79-035d62c97bca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. Scene\08. PauseScene">
+      <UniqueIdentifier>{406fd4fe-03ae-46f1-8064-58b7cae9662d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -111,6 +126,18 @@
     <ClCompile Include="BackGroundObject.cpp">
       <Filter>소스 파일\03. Object\02. BackGroundObject\00. BackGroundObject</Filter>
     </ClCompile>
+    <ClCompile Include="TutorialScene.cpp">
+      <Filter>소스 파일\02. Scene\04. TutorialScene</Filter>
+    </ClCompile>
+    <ClCompile Include="ResultScene.cpp">
+      <Filter>소스 파일\02. Scene\07. ResultScene</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstStageScene.cpp">
+      <Filter>소스 파일\02. Scene\05. FirstStageScene</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseScene.cpp">
+      <Filter>소스 파일\02. Scene\08. PauseScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -151,6 +178,18 @@
     </ClInclude>
     <ClInclude Include="BackGroundObject.h">
       <Filter>소스 파일\03. Object\02. BackGroundObject\00. BackGroundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="TutorialScene.h">
+      <Filter>소스 파일\02. Scene\04. TutorialScene</Filter>
+    </ClInclude>
+    <ClInclude Include="ResultScene.h">
+      <Filter>소스 파일\02. Scene\07. ResultScene</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstStageScene.h">
+      <Filter>소스 파일\02. Scene\05. FirstStageScene</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseScene.h">
+      <Filter>소스 파일\02. Scene\08. PauseScene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

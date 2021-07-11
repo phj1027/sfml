@@ -1,6 +1,8 @@
 #include "framework.h"
 #include "TitleScene.h"
 #include "BackGroundObject.h"
+#include "TutorialScene.h"
+#include "PauseScene.h"
 
 TitleScene::TitleScene()
 {
@@ -25,10 +27,38 @@ void TitleScene::Init()
 	Text* text = new Text("Press Space Key", *font);
 	text->setFillColor(Color::White);
 	text->setOrigin(text->getLocalBounds().width / 2.f, text->getLocalBounds().height / 2.f);
-	text->setPosition(Vector2f(1040 / 2.f, 530.f));
+	text->setPosition(Vector2f(1050 / 2.f, 530.f));
 	mTexts["TITLE"] = text;
 }
 
+
+void TitleScene::Input(Event* e)
+{
+	switch (e->key.code)
+	{
+	case Keyboard::Escape: // titlescene에서 Q를 누르면 
+	{
+		scenes->top()->EndScene(); // 지금 top은 titlescene자기자신 -> 자신을 없앤다는것
+		break;
+	}
+	case Keyboard::Space:
+	{
+		scenes->push(new TutorialScene(scenes));
+		cout << "Tutorial Scene\n";
+		break;
+	}
+	case Keyboard::Q:
+	{
+		scenes->push(new PauseScene(scenes));
+		cout << "Pause Scene\n";
+		break;
+	}
+	default:
+		break;
+	}
+
+
+}
 
 void TitleScene::Destroy()
 {

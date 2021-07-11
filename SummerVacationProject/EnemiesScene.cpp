@@ -33,3 +33,7 @@ void EnemiesScene::Render(RenderWindow* window)
 {
 	Scene::Render(window);
 }
+
+void EnemiesScene::Input(Event* e)
+{
+}

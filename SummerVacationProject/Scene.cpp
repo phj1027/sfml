@@ -22,6 +22,7 @@ void Scene::Init()
 	
 }
 
+
 bool Scene::GetQuit() const
 {
 	return quit;
@@ -30,6 +31,10 @@ bool Scene::GetQuit() const
 void Scene::EndScene()
 {
 	quit = true;
+}
+
+void Scene::Input(Event* e)
+{
 }
 
 void Scene::Update(const float& deltaTime)

@@ -15,6 +15,6 @@ public:
 	//	±ª¿Ã æ¥¥Ÿ∏È virtualæ∏
 	virtual void Update(const float& deltaTime);
 	virtual void Render(RenderWindow* window);
-
+	virtual void Input(Event* e);
 };
 

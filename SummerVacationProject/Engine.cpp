@@ -1,7 +1,5 @@
 #include "framework.h"
 #include "Engine.h"
-#include "EnemiesScene.h"
-#include "CharacterScene.h"
 #include "TitleScene.h"
 
 Engine::Engine()
@@ -28,7 +26,7 @@ void Engine::Init()
 	icon.loadFromFile("Textures/Cinnamon_Bun_icon.png");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
-	this->scenes.push(new TitleScene(&scenes)); // 아무것도 없는 첫 장면 == titlescene
+	this->scenes.push(new TitleScene(&scenes)); // 아무것도 없는 첫 장면 == titlescene == 시작씬
 	cout << "Title Scene\n";
 }
 
@@ -57,58 +55,15 @@ void Engine::Input()
 		// 키보드 이벤트
 		case Event::KeyPressed: // 한번입력할때 한번실행 -> 스킬쓸때 활용
 		{
-			switch (evt.key.code)
+			if (!scenes.empty())
 			{
-			case Keyboard::Space: // A 입력받았다면
-			{
-				this->scenes.push(new CharacterScene); // 캐릭터 scene으로 감
-				cout << "Character Scene\n";
-				break;
-			}
-			case Keyboard::S: // S 입력받았다면
-			{
-				this->scenes.push(new EnemiesScene); // Enemiesq scene으로 감
-				cout << "Enemies Scene\n";
-				break;
-			}
-			case Keyboard::Q:
-			{
-				scenes.top()->EndScene();
-				break;
-			}
-			default:
-				break;
+				scenes.top()->Input(&evt);
 			}
 		}
 		default:
 			break;
 		}
 	}
-
-	// keyBoardInput
-	if (Keyboard::isKeyPressed(Keyboard::Escape)) // esc버튼 입력시 윈도우 창 닫힘
-	{
-		window->close();
-	}
-	//else if (Keyboard::isKeyPressed(Keyboard::A)) // 프레임마다 계속 눌려있는지 확인 -> 실시간으로 이동할때 활용
-	//{
-	//	cout << "Pressed A key!!\n"; //1초에 몇십프레임씩 움직이기때문에 한번만 입력해도 여러번 출력됨
-	//}
-
-
-	// Mouse Input
-	//if (Mouse::isButtonPressed(Mouse::Left))
-	//{
-	//	window->setTitle("Left Click");
-	//}
-	//else if (Mouse::isButtonPressed(Mouse::Right))
-	//{
-	//	window->setTitle("Right Click");
-	//}
-	//else
-	//{
-	//	window->setTitle("Adventure Time with Finn and Jake");
-	//}
 }
 
 void Engine::Update()

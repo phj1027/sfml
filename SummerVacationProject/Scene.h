@@ -1,4 +1,5 @@
 #pragma once
+#include "BackGroundObject.h"
 
 class Object; // vector<Object*> vObjects;를 쓰기위해 
 
@@ -28,9 +29,7 @@ public:
 	bool GetQuit() const;
 	void EndScene();
 
+	virtual void Input(Event* e);
 	virtual void Update(const float& deltaTime);
-
 	virtual void Render(RenderWindow* window);
-						// ㄴ> 그려줄 곳을 말함 
-
 };
