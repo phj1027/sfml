@@ -3,6 +3,7 @@
 #include "EnemiesScene.h"
 #include "CharacterScene.h"
 #include "TitleScene.h"
+#include "LobbyScene.h"
 
 Engine::Engine()
 {
@@ -69,6 +70,12 @@ void Engine::Input()
 			{
 				this->scenes.push(new EnemiesScene); // Enemiesq scene¿∏∑Œ ∞®
 				cout << "Enemies Scene\n";
+				break;
+			}
+			case Keyboard::D: 
+			{
+				this->scenes.push(new LobbyScene);
+				cout << "Lobby Scene\n";
 				break;
 			}
 			case Keyboard::Q:
