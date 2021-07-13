@@ -8,6 +8,9 @@ public:
 	virtual ~TitleScene();
 
 private:
+	Music music;
+
+private:
 	virtual void Init();
 
 public:

@@ -10,6 +10,9 @@ public:
 	~TutorialScene();
 
 private:
+	Music music;
+
+private:
 
 	virtual void Init();
 

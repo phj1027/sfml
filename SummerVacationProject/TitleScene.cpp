@@ -4,6 +4,7 @@
 #include "TutorialScene.h"
 #include "PauseScene.h"
 
+
 TitleScene::TitleScene()
 {
 	Init();
@@ -20,15 +21,19 @@ TitleScene::~TitleScene()
 
 void TitleScene::Init()
 {
+	music.openFromFile("Sound/100116happybgm.wav");
+	music.play();
+
 	vObjects.push_back(new BackGroundObject("Textures/Adventure Time with Finn and Jake/Background/d.png"));
-	
+
 	Font* font = new Font;
 	font->loadFromFile("Font/CookieRun_Bold.ttf");
-	Text* text = new Text("Press Space Key", *font);
+	Text* text = new Text("Press Enter Key", *font);
 	text->setFillColor(Color::White);
 	text->setOrigin(text->getLocalBounds().width / 2.f, text->getLocalBounds().height / 2.f);
-	text->setPosition(Vector2f(1050 / 2.f, 530.f));
+	text->setPosition(Vector2f(1325 / 2.f, 500.f));
 	mTexts["TITLE"] = text;
+
 }
 
 
@@ -36,12 +41,12 @@ void TitleScene::Input(Event* e)
 {
 	switch (e->key.code)
 	{
-	case Keyboard::Escape: // titlescene에서 Q를 누르면 
+	case Keyboard::Escape: 
 	{
 		scenes->top()->EndScene(); // 지금 top은 titlescene자기자신 -> 자신을 없앤다는것
 		break;
 	}
-	case Keyboard::Space:
+	case Keyboard::Enter:
 	{
 		scenes->push(new TutorialScene(scenes));
 		cout << "Tutorial Scene\n";
@@ -57,7 +62,6 @@ void TitleScene::Input(Event* e)
 		break;
 	}
 
-
 }
 
 void TitleScene::Destroy()
@@ -69,7 +73,7 @@ void TitleScene::Update(const float& deltaTime)
 {
 	static float elapsedTime = 0.f;
 
-	static float txtScale = 1.f; // 초기값이 1임 / 최대값 1.3임~최저값 1.0 
+	static float txtScale = 1.3f; // 초기값이 1임 / 최대값 1.3임~최저값 1.0 
 
 	static int frame = 0;
 	static int div = 1;
