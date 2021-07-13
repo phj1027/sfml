@@ -53,14 +53,14 @@ void FirstStageScene::Init()
 	//{
 	//	j->setPosition(urd(dre), urd(dre));
 	//}
+
 }
 
 void FirstStageScene::Input(Event* e)
 {
 	switch (e->key.code)
 	{
-
-	case Keyboard::Space:
+	case Keyboard::Enter:
 	{
 		scenes->push(new ResultScene(scenes));
 		cout << "ResultScene Scene\n";

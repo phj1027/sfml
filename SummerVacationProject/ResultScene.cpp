@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "ResultScene.h"
+#include "TitleScene.h"
 
 ResultScene::ResultScene()
 {
@@ -21,7 +22,19 @@ void ResultScene::Init()
 }
 
 void ResultScene::Input(Event* e)
-{
+{	
+	switch (e->key.code)
+	{
+	case Keyboard::Enter:
+	{
+		scenes->push(new ResultScene(scenes));
+		cout << "ResultScene Scene\n";
+		break;
+	}
+
+	default:
+		break;
+	}
 }
 
 void ResultScene::Destroy()

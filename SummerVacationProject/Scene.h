@@ -19,6 +19,7 @@ protected:
 	map<string, Text*>mTexts; // string에 대응하는 Text*가 나오는것
 	stack<Scene*>* scenes;
 	bool quit = false;
+	
 
 private:
 

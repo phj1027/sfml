@@ -1,13 +1,13 @@
-#include "framework.h" // framework는 항상 맨위에
+#include "framework.h" 
 #include "Scene.h"
-#include "Object.h" // vector<Object*> vObjects;의 Object사용하기 위해 
+#include "Object.h" 
 
 Scene::Scene()
 {
 	Init();
 }
 
-Scene::Scene(stack<Scene*>* scenes) : scenes(scenes) // 받아오는 변수들을 자신의 멤버변수에 넣음
+Scene::Scene(stack<Scene*>* scenes) : scenes(scenes) 
 {
 	Init();
 }
@@ -22,15 +22,14 @@ void Scene::Init()
 	
 }
 
+void Scene::EndScene()
+{
+	quit = true;
+}
 
 bool Scene::GetQuit() const
 {
 	return quit;
-}
-
-void Scene::EndScene()
-{
-	quit = true;
 }
 
 void Scene::Input(Event* e)

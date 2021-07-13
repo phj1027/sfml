@@ -15,15 +15,14 @@ Engine::~Engine()
 void Engine::Init()
 {
 	// 현재 window 변수는 포인터로 존재함
-
-	this->window = new RenderWindow(VideoMode(1000,600),"Adventure Time with Finn and Jake");
+	this->window = new RenderWindow(VideoMode(1300,600),"Adventure Time with Finn and Jake");
 	// this는 현재 작성하고있는 Engine을 의미함 == Engine의 window
 
 	window->setMouseCursorVisible(true); // 마우스 커서 보이게 설정
 
 	// 윈도우창 아이콘 꾸미기
 	Image icon;
-	icon.loadFromFile("Textures/Cinnamon_Bun_icon.png");
+	icon.loadFromFile("Textures/Jake_Forms.png");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
 	this->scenes.push(new TitleScene(&scenes)); // 아무것도 없는 첫 장면 == titlescene == 시작씬
