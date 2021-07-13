@@ -3,6 +3,7 @@
 #include "BackGroundObject.h"
 #include "FirstStageScene.h"
 #include "PauseScene.h"
+#include "Character.h"
 
 TutorialScene::TutorialScene()
 {
@@ -21,7 +22,11 @@ TutorialScene::~TutorialScene()
 
 void TutorialScene::Init()
 {
-	//vObjects.push_back(new BackGroundObject(""));
+
+	Object* backGround = new BackGroundObject("Textures/Adventure Time with Finn and Jake/Background/Treehouseeembottom.png");
+	vObjects.push_back(backGround);
+	vObjects.push_back(new Character);
+
 }
 
 void TutorialScene::Input(Event* e)
@@ -29,7 +34,7 @@ void TutorialScene::Input(Event* e)
 	switch (e->key.code)
 	{
 
-	case Keyboard::Space:
+	case Keyboard::Enter:
 	{
 		scenes->push(new FirstStageScene(scenes));
 		cout << "FirstStageScene Scene\n";
