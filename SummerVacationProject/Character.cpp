@@ -7,13 +7,18 @@ Character::Character()
 }
 Character::~Character()
 {
+
 }
 
 void Character::Init()
 {
 	Texture* tx = nullptr;
+	
+	setScale(2.5f, 2.5f);
+	setPosition(Vector2f(20.f, 440.f));
 
 	char filePath[150];
+
 	for (int i = 0; i < 9; ++i)
 	{
 		sprintf(filePath, "Textures/Adventure Time with Finn and Jake/Finn&Jake/Finn&Jake_Idle_Calm1~9/Calm_(%d).png", i);
@@ -26,14 +31,28 @@ void Character::Init()
 		sprintf(filePath, "Textures/Adventure Time with Finn and Jake/Finn&Jake/Finn&Jake_Walk1~16/Finn&Jake_Walk_(%d).png", i);
 		tx = new Texture;
 		tx->loadFromFile(filePath);
-		this->walkAnimation.push_back(tx);
+		this->rightwalkAnimation.push_back(tx);
+	}
+	for (int i = 16; i < 31; ++i)
+	{
+		sprintf(filePath, "Textures/Adventure Time with Finn and Jake/Finn&Jake/Finn&Jake_Walk1~16/Finn&Jake_Walk_(%d).png", i);
+		tx = new Texture;
+		tx->loadFromFile(filePath);
+		this->leftwalkAnimation.push_back(tx);
 	}
 	for (int i = 0; i < 11; ++i)
 	{
 		sprintf(filePath, "Textures/Adventure Time with Finn and Jake/Finn&Jake/Finn&Jake_Run1~12/Finn&Jake_Run_(%d).png", i);
 		tx = new Texture;
 		tx->loadFromFile(filePath);
-		this->runAnimation.push_back(tx);
+		this->rightrunAnimation.push_back(tx);
+	}
+	for (int i = 12; i < 23; ++i)
+	{
+		sprintf(filePath, "Textures/Adventure Time with Finn and Jake/Finn&Jake/Finn&Jake_Run1~12/Finn&Jake_Run_(%d).png", i);
+		tx = new Texture;
+		tx->loadFromFile(filePath);
+		this->leftrunAnimation.push_back(tx);
 	}
 	for (int i = 0; i < 17; ++i)
 	{
@@ -51,14 +70,14 @@ void Character::Init()
 	}
 
 	stateAnimation[IDLE] = idleAnimation;
-	stateAnimation[WALK] = walkAnimation;
-	stateAnimation[RUN] = runAnimation;
+	stateAnimation[RIGHTWALK] = rightwalkAnimation;
+	stateAnimation[LEFTWALK] = leftwalkAnimation;
+	stateAnimation[RIGHTRUN] = rightrunAnimation;
+	stateAnimation[LEFTRUN] = leftrunAnimation;
 	stateAnimation[JUMP] = jumpAnimation;
 	stateAnimation[PUNCH] = punchAnimation;
 
-	setScale(2.f, 2.f);
-	setPosition(Vector2f(100.f, 100.f));
-	
+
 }
 
 void Character::Destroy()
@@ -68,41 +87,31 @@ void Character::Destroy()
 
 void Character::MoveUpdate()
 {
-	if (position.y < 200.f)
-	{
-		// 위로 점프하기 위한 것
-		velocity.y += gravity;  // 프레임마다 중력올림 -10 -> -8 -> -6 ....
-	}
-	else if (position.y > 200.f)
-	{
-		// 바닥으로 꺼지는 것을 막기 위한 것
-		position.y = 200.f;
-	}
-
-	velocity += acceleration;
-	position += velocity;
 
 }
 
 void Character::Update(const float& deltaTime)
 {
-	if (Keyboard::isKeyPressed(Keyboard::Space)) // 점프 제대로 실행 안됨 ★
+
+	if (Keyboard::isKeyPressed(Keyboard::D))
 	{
-		// sfml 좌표계 좌상단 (0,0) (위로 올라갈수록 - 이고 아래로내려갈수록 + 오른쪽 + 왼쪽 -)
-		state = JUMP;
-		velocity.y = -10; // y축속도를 -10 줌
+		state = RIGHTRUN;
+		move(0.1f, 0.f);
 	}
-
-	MoveUpdate();
-	setPosition(position);
-
-	if (Keyboard::isKeyPressed(Keyboard::Z))
+	if (Keyboard::isKeyPressed(Keyboard::A))
 	{
-		state = RUN;
+		state = LEFTRUN;
+		move(-0.1f, 0.f);
 	}
 	else if (Keyboard::isKeyPressed(Keyboard::Right))
 	{
-		state = WALK;
+		state = RIGHTWALK;
+		move(0.07f, 0.f);
+	}
+	else if (Keyboard::isKeyPressed(Keyboard::Left))
+	{
+		state = LEFTWALK;
+		move(-0.07f, 0.f);
 	}
 	else if (Keyboard::isKeyPressed(Keyboard::V))
 	{
