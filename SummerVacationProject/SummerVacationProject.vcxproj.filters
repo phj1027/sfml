@@ -135,6 +135,9 @@
     <ClCompile Include="PauseScene.cpp">
       <Filter>소스 파일\02. Scene\08. PauseScene</Filter>
     </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -184,6 +187,9 @@
     </ClInclude>
     <ClInclude Include="PauseScene.h">
       <Filter>소스 파일\02. Scene\08. PauseScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

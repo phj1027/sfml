@@ -10,8 +10,8 @@ TutorialScene::TutorialScene()
 	Init();
 }
 
-TutorialScene::TutorialScene(stack<Scene*>* scenes)
-	:Scene(scenes)
+TutorialScene::TutorialScene(stack<Scene*>* scenes,RenderWindow* window)
+	:Scene(scenes, window)
 {
 	Init();
 }
@@ -24,8 +24,9 @@ void TutorialScene::Init()
 {
 
 	Object* backGround = new BackGroundObject("Textures/Adventure Time with Finn and Jake/Background/Treehouseeembottom.png");
-	vObjects.push_back(backGround);
-	vObjects.push_back(new Character);
+	animationObjects.push_back(backGround);
+	animationObjects.push_back(new Character);
+
 
 }
 
@@ -36,13 +37,13 @@ void TutorialScene::Input(Event* e)
 
 	case Keyboard::Enter:
 	{
-		scenes->push(new FirstStageScene(scenes));
+		scenes->push(new FirstStageScene(scenes,window));
 		cout << "FirstStageScene Scene\n";
 		break;
 	}
 	case Keyboard::Q:
 	{
-		scenes->push(new PauseScene(scenes));
+		scenes->push(new PauseScene(scenes, window));
 		cout << "Pause Scene\n";
 		break;
 	}

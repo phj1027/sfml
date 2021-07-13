@@ -5,7 +5,7 @@ class ResultScene :
 {
 public:
 	ResultScene();
-	ResultScene(stack<Scene*>* scenes);
+	ResultScene(stack<Scene*>* scenes, RenderWindow* window);
 	~ResultScene();
 
 private:

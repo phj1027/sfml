@@ -7,8 +7,8 @@ ResultScene::ResultScene()
 	Init();
 }
 
-ResultScene::ResultScene(stack<Scene*>* scenes)
-	:Scene(scenes)
+ResultScene::ResultScene(stack<Scene*>* scenes, RenderWindow* window)
+	:Scene(scenes, window)
 {
 	Init();
 }
@@ -27,7 +27,7 @@ void ResultScene::Input(Event* e)
 	{
 	case Keyboard::Enter:
 	{
-		scenes->push(new ResultScene(scenes));
+		scenes->push(new ResultScene(scenes, window));
 		cout << "ResultScene Scene\n";
 		break;
 	}

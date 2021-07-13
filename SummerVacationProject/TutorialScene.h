@@ -6,7 +6,7 @@ class TutorialScene :
 
 public:
 	TutorialScene();
-	TutorialScene(stack<Scene*>* scenes);
+	TutorialScene(stack<Scene*>* scenes,RenderWindow* window);
 	~TutorialScene();
 
 private:

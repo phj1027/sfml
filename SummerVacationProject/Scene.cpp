@@ -1,13 +1,14 @@
 #include "framework.h" 
 #include "Scene.h"
 #include "Object.h" 
+ 
 
 Scene::Scene()
 {
 	Init();
 }
 
-Scene::Scene(stack<Scene*>* scenes) : scenes(scenes) 
+Scene::Scene(stack<Scene*>* scenes, RenderWindow* window) : scenes(scenes), window(window)
 {
 	Init();
 }
@@ -38,17 +39,31 @@ void Scene::Input(Event* e)
 
 void Scene::Update(const float& deltaTime)
 {
-	for (auto& obj : vObjects)
+	mousePosition = window->mapPixelToCoords(Mouse::getPosition(*window));
+
+	for (auto& obj : animationObjects)
 	{
 		obj->Update(deltaTime);
+	}
+
+	for (auto& btn : mButtons)
+	{
+		btn.second->Update(mousePosition); // 버튼은 시간이아닌 포지션으로만 업데이트하게됨 
 	}
 }
 
 void Scene::Render(RenderWindow* window)
 {
-	for (auto& obj : vObjects)
+	for (auto& obj : animationObjects)
 	{
-		window->draw(*obj);
+		if (obj->IsActive() == true)
+		{
+			window->draw(*obj);
+		}
+	}
+	for (auto& btn : mButtons)
+	{
+		window->draw(*btn.second); // 버튼은 시간이아닌 포지션으로만 업데이트하게됨 
 	}
 	for (auto& txt : mTexts)
 	{

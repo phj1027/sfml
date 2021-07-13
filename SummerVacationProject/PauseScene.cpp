@@ -7,8 +7,8 @@ PauseScene::PauseScene()
 	Init();
 }
 
-PauseScene::PauseScene(stack<Scene*>* scenes)
-	:Scene(scenes)
+PauseScene::PauseScene(stack<Scene*>* scenes, RenderWindow* window)
+	:Scene(scenes, window)
 {
 	Init();
 }

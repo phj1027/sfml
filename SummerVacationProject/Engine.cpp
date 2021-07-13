@@ -25,7 +25,7 @@ void Engine::Init()
 	icon.loadFromFile("Textures/Jake_Forms.png");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
-	this->scenes.push(new TitleScene(&scenes)); // 아무것도 없는 첫 장면 == titlescene == 시작씬
+	this->scenes.push(new TitleScene(&scenes, window)); // 아무것도 없는 첫 장면 == titlescene == 시작씬
 	cout << "Title Scene\n";
 }
 
