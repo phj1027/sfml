@@ -63,11 +63,11 @@ void Button::Update(const Vector2f& mousePosition)
 
 	if (isPressed) // 버튼 눌렸다면 active , 아니라면 idle
 	{
-		setTexture(*activeTexture);
+		setScale({ 0.07f,0.07f });
 	}
 	else
 	{
-		setTexture(*idleTexture);
+		setScale({ 0.1f,0.1f });
 	}
 
 }

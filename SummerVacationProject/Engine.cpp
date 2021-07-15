@@ -15,7 +15,7 @@ Engine::~Engine()
 void Engine::Init()
 {
 	// 현재 window 변수는 포인터로 존재함
-	this->window = new RenderWindow(VideoMode(1300,600),"Adventure Time with Finn and Jake");
+	this->window = new RenderWindow(VideoMode(1300,700),"Adventure Time with Finn and Jake");
 	// this는 현재 작성하고있는 Engine을 의미함 == Engine의 window
 
 	window->setMouseCursorVisible(true); // 마우스 커서 보이게 설정
