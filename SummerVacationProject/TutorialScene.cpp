@@ -22,35 +22,54 @@ TutorialScene::~TutorialScene()
 
 void TutorialScene::Init()
 {
+	//soundSystem = new SoundSystem("Sound/Stage1.wav", true);
+	//soundSystem->Play();
 
 	Object* backGround = new BackGroundObject("Textures/Adventure Time with Finn and Jake/Background/Treehouseeembottom.png");
 	animationObjects.push_back(backGround);
 	animationObjects.push_back(new Character);
 
 
+
 }
 
 void TutorialScene::Input(Event* e)
 {
-	switch (e->key.code)
+	switch (e->type)
 	{
-
-	case Keyboard::Enter:
+	case Event::KeyPressed:
 	{
-		scenes->push(new FirstStageScene(scenes,window, soundSystem));
-		cout << "FirstStageScene Scene\n";
+		switch (e->key.code)
+		{
+		case Keyboard::Enter:
+		{
+			scenes->push(new FirstStageScene(scenes, window, soundSystem));
+			cout << "FirstStageScene Scene\n";
+			break;
+		}
+		case Keyboard::Q:
+		{
+			scenes->push(new PauseScene(scenes, window, soundSystem));
+			cout << "Pause Scene\n";
+			break;
+		}
+		default:
+			break;
+		}
 		break;
 	}
-	case Keyboard::Q:
+
+	case Event::MouseButtonPressed:
 	{
-		scenes->push(new PauseScene(scenes, window,soundSystem));
-		cout << "Pause Scene\n";
+		soundSystem->AddEffectSound("Sound/GetCoin.wav", "GetCoin");
+		soundSystem->EffectPlay("GetCoin"); // Àç»ý x 
 		break;
 	}
 	default:
 		break;
 	}
 }
+
 void TutorialScene::Destroy()
 {
 }

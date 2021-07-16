@@ -20,13 +20,20 @@ public:
 	float volume = 70.f;
 	bool loop = false;
 
+	map<string, Sound*> effectSound;
+	map<string, SoundBuffer*> effectSoundBuffer;
+
+	float effectVolume = 50.f;
+
 private:
 
 	void Init();
 
-
 public:
+
 	void Destroy();
+	void AddEffectSound(const string& soundFilePath, const string& effectName);
+	void EffectPlay(const string& effectName);
 	void Play(); // 소리재생
 	void Pause();
 	void Stop();

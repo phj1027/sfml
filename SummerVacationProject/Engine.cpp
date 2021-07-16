@@ -23,9 +23,8 @@ void Engine::Init()
 	this->evt = new Event;
 	this->timer = new Clock;
 
-	soundSystem = new SoundSystem("Sound/happybgm.wav", true);
-
-	soundSystem->Play();
+	
+	
 
 	// 윈도우창 아이콘 꾸미기
 	Image icon;
