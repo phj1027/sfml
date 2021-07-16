@@ -9,7 +9,7 @@ Engine::Engine()
 
 Engine::~Engine()
 {
-
+	Destroy();
 }
 
 void Engine::Init()
@@ -18,33 +18,38 @@ void Engine::Init()
 	this->window = new RenderWindow(VideoMode(1300,700),"Adventure Time with Finn and Jake");
 	// this는 현재 작성하고있는 Engine을 의미함 == Engine의 window
 
-	window->setMouseCursorVisible(true); // 마우스 커서 보이게 설정
+	this->window->setMouseCursorVisible(true); // 마우스 커서 보이게 설정
+
+	this->evt = new Event;
+	this->timer = new Clock;
+
+	soundSystem = new SoundSystem("Sound/happybgm.wav", true);
+
+	soundSystem->Play();
 
 	// 윈도우창 아이콘 꾸미기
 	Image icon;
 	icon.loadFromFile("Textures/Jake_Forms.png");
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
-
-	this->scenes.push(new TitleScene(&scenes, window)); // 아무것도 없는 첫 장면 == titlescene == 시작씬
+	scenes.push(new TitleScene(&scenes, window, soundSystem)); // 아무것도 없는 첫 장면 == titlescene == 시작씬
 	cout << "Title Scene\n";
 }
 
 void Engine::Destroy()
 {
-	// Init에서 window는 new로 동적할당을 받았기 때문에 풀어줘야함
-	// window가 nullptr이 아니라면
-	if (window)
-	{
-		delete window;
-	}
+	DELETE(timer);
+	DELETE(evt);
+	DELETE(window);
+
+	soundSystem->Destroy(); //AL lib: (EE) alc_cleanup: 1 device not closed 해결
 }
 
 void Engine::Input()
 {
 	// 이벤트는 외부로부터 이벤트를 받는거니까 input 
-	while (window->pollEvent(evt))
+	while (window->pollEvent(*evt))
 	{
-		switch (evt.type)
+		switch (evt->type)
 		{
 		case Event::Closed:
 		{
@@ -56,7 +61,7 @@ void Engine::Input()
 		{
 			if (!scenes.empty())
 			{
-				scenes.top()->Input(&evt);
+				scenes.top()->Input(&*evt);
 			}
 		}
 		default:
@@ -68,10 +73,10 @@ void Engine::Input()
 void Engine::Update()
 {
 	// 시간도 update해야함
-	deltaTime = timer.getElapsedTime().asSeconds();
+	deltaTime = timer->getElapsedTime().asSeconds();
 
 	
-	timer.restart();
+	timer->restart();
 
 	// input은 매프레임 실행되기때문에 update의 일부분
 	Input();

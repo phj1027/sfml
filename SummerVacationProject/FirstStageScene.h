@@ -6,7 +6,7 @@ class FirstStageScene :
 
 public:
 	FirstStageScene();
-	FirstStageScene(stack<Scene*>* scenes, RenderWindow* window);
+	FirstStageScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem);
 	~FirstStageScene();
 
 private:

@@ -14,8 +14,8 @@ void Character::Init()
 {
 	Texture* tx = nullptr;
 	
-	setScale(2.5f, 2.5f);
-	setPosition(Vector2f(20.f, 440.f));
+	setScale(3.5f, 3.5f);
+	setPosition(Vector2f(20.f, 480.f));
 
 	char filePath[150];
 

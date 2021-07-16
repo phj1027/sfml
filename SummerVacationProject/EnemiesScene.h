@@ -4,7 +4,7 @@ class EnemiesScene : public Scene
 {
 public:
 	EnemiesScene();
-	EnemiesScene(stack<Scene*>* scenes, RenderWindow* window); // scene포인터를 담고있는 stack의 포인터 
+	EnemiesScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem); // scene포인터를 담고있는 stack의 포인터 
 	virtual ~EnemiesScene();
 
 private:

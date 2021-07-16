@@ -8,8 +8,8 @@ EnemiesScene::EnemiesScene()
 	Init();
 }
 
-EnemiesScene::EnemiesScene(stack<Scene*>* scenes, RenderWindow* window)
-	:Scene(scenes, window)
+EnemiesScene::EnemiesScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
+	:Scene(scenes, window, soundSystem)
 													//ㄴ> Scene.cpp에서는 scenes(scenes)인데 여긴 Scene(scenes)인 이유 : 자신의 부모클래스의 생성자((stack<Scene*>* scenes)==매개변수를 받는 생성자)는 똑같이 쓰겠다는 뜻 
 {
 	Init();

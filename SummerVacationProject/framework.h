@@ -9,13 +9,17 @@
 using namespace sf;
 
 #include <iostream>
+#include <string>
 #include <map>
 #include <vector>
 #include <stack>
-#include <typeinfo>
+#include <fstream>
 #include <random>
 
 using namespace std;
+
+#define DELETE(x) if(x) delete (x); (x) = nullptr
+constexpr float PI = 3.14159265f;
 
 // pch(Precompiled Header) : 미리 컴파일된 헤더, 자주변경되지 않는 긴소스를 미리 컴파일하여 
 // 컴파일결과를 별도의 파일에 저장하여, 다시 똑같은 헤더를 컴파일시 해당파일을 처음부터 컴파일하지않고 

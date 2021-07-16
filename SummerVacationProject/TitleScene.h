@@ -4,7 +4,7 @@ class TitleScene : public Scene
 {
 public:
 	TitleScene();
-	TitleScene(stack<Scene*>* scenes, RenderWindow* window); // scene포인터를 담고있는 stack의 포인터 
+	TitleScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem); // scene포인터를 담고있는 stack의 포인터 
 	virtual ~TitleScene();
 
 private:

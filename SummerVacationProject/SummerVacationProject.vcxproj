@@ -157,6 +157,7 @@
     <ClCompile Include="SignMonster.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="SoundSystem.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="TutorialScene.cpp" />
   </ItemGroup>
@@ -176,6 +177,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SignMonster.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="SoundSystem.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="TutorialScene.h" />
   </ItemGroup>

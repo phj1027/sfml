@@ -10,8 +10,8 @@ TutorialScene::TutorialScene()
 	Init();
 }
 
-TutorialScene::TutorialScene(stack<Scene*>* scenes,RenderWindow* window)
-	:Scene(scenes, window)
+TutorialScene::TutorialScene(stack<Scene*>* scenes,RenderWindow* window, SoundSystem* soundSystem)
+	:Scene(scenes, window,soundSystem)
 {
 	Init();
 }
@@ -37,13 +37,13 @@ void TutorialScene::Input(Event* e)
 
 	case Keyboard::Enter:
 	{
-		scenes->push(new FirstStageScene(scenes,window));
+		scenes->push(new FirstStageScene(scenes,window, soundSystem));
 		cout << "FirstStageScene Scene\n";
 		break;
 	}
 	case Keyboard::Q:
 	{
-		scenes->push(new PauseScene(scenes, window));
+		scenes->push(new PauseScene(scenes, window,soundSystem));
 		cout << "Pause Scene\n";
 		break;
 	}

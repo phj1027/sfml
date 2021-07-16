@@ -12,8 +12,8 @@ FirstStageScene::FirstStageScene()
 	Init();
 }
 
-FirstStageScene::FirstStageScene(stack<Scene*>* scenes, RenderWindow* window)
-	:Scene(scenes, window)
+FirstStageScene::FirstStageScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem)
+	:Scene(scenes, window, soundSystem)
 {
 	Init();
 }
@@ -62,13 +62,13 @@ void FirstStageScene::Input(Event* e)
 	{
 	case Keyboard::Enter:
 	{
-		scenes->push(new ResultScene(scenes, window));
+		scenes->push(new ResultScene(scenes, window,soundSystem));
 		cout << "ResultScene Scene\n";
 		break;
 	}
 	case Keyboard::Q:
 	{
-		scenes->push(new PauseScene(scenes, window));
+		scenes->push(new PauseScene(scenes, window, soundSystem));
 		cout << "Pause Scene\n";
 		break;
 	}

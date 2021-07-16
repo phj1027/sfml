@@ -10,7 +10,7 @@ TitleScene::TitleScene()
 	Init();
 }
 
-TitleScene::TitleScene(stack<Scene*>* scenes, RenderWindow* window) : Scene(scenes, window)
+TitleScene::TitleScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem) : Scene(scenes, window, soundSystem)
 {
 	Init();
 }
@@ -21,8 +21,7 @@ TitleScene::~TitleScene()
 
 void TitleScene::Init()
 {
-	music.openFromFile("Sound/100116happybgm.wav");
-	music.play();
+
 
 	animationObjects.push_back(new BackGroundObject("Textures/Adventure Time with Finn and Jake/Background/T.png"));
 
@@ -33,9 +32,12 @@ void TitleScene::Init()
 	//text->setOrigin(text->getLocalBounds().width / 2.f, text->getLocalBounds().height / 2.f);
 	//text->setPosition(Vector2f(1325 / 2.f, 500.f));
 	//mTexts["TITLE"] = text;
-	mButtons["PLAY"] = new Button("Textures/Adventure Time with Finn and Jake/Button/start-button.png", 
-									"Textures/Adventure Time with Finn and Jake/Button/PlayButtonaction.png", 
-										Vector2f(1315 / 2.f, 630.f));
+	mButtons["START"] = new Button("Textures/Adventure Time with Finn and Jake/Button/start.png", 
+									"Textures/Adventure Time with Finn and Jake/Button/exit.png", 
+										Vector2f(1080.f, 510.f));
+	mButtons["EXIT"] = new Button("Textures/Adventure Time with Finn and Jake/Button/exit.png",
+		"Textures/Adventure Time with Finn and Jake/Button/PlayButtonaction.png",
+		Vector2f(1080.f, 600.f));
 }
 
 
@@ -48,15 +50,16 @@ void TitleScene::Input(Event* e)
 		scenes->top()->EndScene(); // 지금 top은 titlescene자기자신 -> 자신을 없앤다는것
 		break;
 	}
+	
 	case Keyboard::Enter:
 	{
-		scenes->push(new TutorialScene(scenes, window));
+		scenes->push(new TutorialScene(scenes, window,soundSystem));
 		cout << "Tutorial Scene\n";
 		break;
 	}
 	case Keyboard::Q:
 	{
-		scenes->push(new PauseScene(scenes, window));
+		scenes->push(new PauseScene(scenes, window, soundSystem));
 		cout << "Pause Scene\n";
 		break;
 	}
@@ -73,9 +76,13 @@ void TitleScene::Destroy()
 
 void TitleScene::Update(const float& deltaTime)
 {
-	if (mButtons["PLAY"]->IsPressed())
+	if (mButtons["START"]->IsPressed())
 	{
-		scenes->push(new TutorialScene(scenes, window));
+		scenes->push(new TutorialScene(scenes, window, soundSystem));
+	}
+	else if (mButtons["EXIT"]->IsPressed())
+	{
+		scenes->top()->EndScene();
 	}
 	Scene::Update(deltaTime);
 }

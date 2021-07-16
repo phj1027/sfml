@@ -1,4 +1,5 @@
 #pragma once
+#include "SoundSystem.h"
 
 class Scene;
 
@@ -9,19 +10,27 @@ class Engine final // final : 더이상 이 클레스에게 상속받지 않는다.
 public: // 생성자, 소멸자
 
 	Engine();
+	Engine(const Engine&) = delete;
+	Engine& operator=(const Engine&) = delete;
 	~Engine();
 
 private: // 멤버 변수 
 
 	// 오브젝트들을 그리기위한 윈도우를 생성
 	RenderWindow* window = nullptr;
-	Event evt;
+	SoundSystem* soundSystem = nullptr;
+	stack<Scene*> scenes;
+	Event* evt = nullptr;
 
 	// 게임 전체에 대한 시간
-	Clock timer;
+	Clock* timer = nullptr;
 	float deltaTime = 0.f; // 엔진에서 deltaTime가지고 모든 오브젝트를 시간에 맞게 정해줄것
+	float elapsedTime = 0.f;
 
-	stack<Scene*> scenes;
+	
+	
+
+	Vector2f mousePosition{ 0.f,0.f };
 
 private: // 메소드
 

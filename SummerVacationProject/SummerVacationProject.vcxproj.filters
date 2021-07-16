@@ -85,6 +85,12 @@
     <Filter Include="소스 파일\03. Object\03. Button">
       <UniqueIdentifier>{730de319-7249-418f-801b-7348b66338fa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\97. System">
+      <UniqueIdentifier>{5ab86a3f-0821-4b68-b838-f91bcbcde616}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\97. System\01. SoundSystem">
+      <UniqueIdentifier>{5baa4418-40ef-4cc3-98b2-5e88b0fafcb1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -138,6 +144,9 @@
     <ClCompile Include="Button.cpp">
       <Filter>소스 파일\03. Object\03. Button</Filter>
     </ClCompile>
+    <ClCompile Include="SoundSystem.cpp">
+      <Filter>소스 파일\97. System\01. SoundSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h">
@@ -190,6 +199,9 @@
     </ClInclude>
     <ClInclude Include="Button.h">
       <Filter>소스 파일\03. Object\03. Button</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundSystem.h">
+      <Filter>소스 파일\97. System\01. SoundSystem</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

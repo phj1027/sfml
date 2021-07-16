@@ -5,7 +5,7 @@ class PauseScene :
 {
 public:
 	PauseScene();
-	PauseScene(stack<Scene*>* scenes, RenderWindow* window);
+	PauseScene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem);
 	~PauseScene();
 
 private:

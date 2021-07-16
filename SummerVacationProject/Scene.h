@@ -1,6 +1,7 @@
 #pragma once
 #include "BackGroundObject.h"
 #include "Button.h"
+#include "SoundSystem.h"
 
 class Object; // vector<Object*> vObjects;를 쓰기위해 
 
@@ -8,8 +9,10 @@ class Scene // Scene은 상속받는 애들이 많음 _ 지금 마더 클래스를 만드는것
 {
 public:
 	Scene();
-	Scene(stack<Scene*>* scenes, RenderWindow* window); // 씬마다 윈도우를 가질수있게함 없으면없는대로 있으면있는대로
-	virtual ~Scene();
+	Scene(stack<Scene*>* scenes, RenderWindow* window, SoundSystem* soundSystem); // 씬마다 윈도우를 가질수있게함 없으면없는대로 있으면있는대로
+	Scene(const Scene&) = delete;
+	Scene* operator = (const Scene&) = delete;
+	virtual ~Scene() = default;
 
 protected:
 
@@ -24,6 +27,10 @@ protected:
 
 	stack<Scene*>* scenes = nullptr;
 	RenderWindow* window = nullptr;
+	SoundSystem* soundSystem = nullptr;
+	Object* backGround = nullptr;
+	vector<Object*> objects;
+	
 
 	// 마우스의 위치 (게임 창 내에서의)
 	Vector2f mousePosition{ 0.f,0.f };	
