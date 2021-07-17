@@ -23,8 +23,7 @@ void Engine::Init()
 	this->evt = new Event;
 	this->timer = new Clock;
 
-	
-	
+
 
 	// 윈도우창 아이콘 꾸미기
 	Image icon;
@@ -32,14 +31,16 @@ void Engine::Init()
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 
 
-	soundSystem = new SoundSystem("Sound/happybgm.wav");
+	soundSystem = new SoundSystem();
+	soundSystem->AddBGMSound("Sound/happybgm.wav", "Titlebgm");
+	soundSystem->AddBGMSound("Sound/Stage1.wav", "Stage1");
 	soundSystem->AddEffectSound("Sound/MouseClick.wav", "Click");
 	soundSystem->AddEffectSound("Sound/GetCoin.wav", "GetCoin");
 
 	scenes.push(new TitleScene(&scenes, window, soundSystem)); // 아무것도 없는 첫 장면 == titlescene == 시작씬
 	cout << "Title Scene\n";
 
-	soundSystem->Play();
+	soundSystem->BGMPlay("Titlebgm");
 }
 
 void Engine::Destroy()
@@ -63,12 +64,13 @@ void Engine::Input()
 			window->close();
 			break;
 		}
+		case Event::MouseButtonPressed:
 		// 키보드 이벤트
 		case Event::KeyPressed: // 한번입력할때 한번실행 -> 스킬쓸때 활용
 		{
 			if (!scenes.empty())
 			{
-				scenes.top()->Input(&*evt);
+				scenes.top()->Input(evt);
 			}
 		}
 		default:
@@ -82,7 +84,6 @@ void Engine::Update()
 	// 시간도 update해야함
 	deltaTime = timer->getElapsedTime().asSeconds();
 
-	
 	timer->restart();
 
 	// input은 매프레임 실행되기때문에 update의 일부분

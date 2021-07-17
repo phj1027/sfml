@@ -8,10 +8,6 @@ SoundSystem::SoundSystem()
 	Init();
 }
 
-SoundSystem::SoundSystem(const string& soundFilePath, bool loop) : filePath(soundFilePath), loop(loop)
-{
-	Init();
-}
 
 SoundSystem::~SoundSystem()
 {
@@ -20,27 +16,25 @@ SoundSystem::~SoundSystem()
 
 void SoundSystem::Init()
 {
-	BGMsound = new Sound;
-	BGMsoundBuffer = new SoundBuffer;
-
-	if (!BGMsoundBuffer->loadFromFile(filePath))
-	{
-		cout << "not load sound - " << filePath << endl;
-	}
 	
-	BGMsound->setBuffer(*BGMsoundBuffer);   // soundBuffer가 텍스쳐 역할 sound가 스프라이트 역할
-	BGMsound->setVolume(this->BGMvolume);
-	BGMsound->setLoop(this->loop);
-
-	// 초기화 되자마자 실행 , 내가 정한곳에서만 플레이하고싶으면 생략 
-	//sound->play();
 
 }
 
 void SoundSystem::Destroy()
 {
-	DELETE(BGMsoundBuffer);
-	DELETE(BGMsound);
+	for (auto& s : BGMSound)
+	{
+		DELETE(s.second);
+
+	}
+	BGMSound.clear();
+
+	for (auto& sb : BGMSoundBuffer)
+	{
+		DELETE(sb.second);
+	}
+
+	BGMSoundBuffer.clear();
 
 	for (auto& s : effectSound)
 	{
@@ -76,12 +70,44 @@ void SoundSystem::EffectPlay(const string& effectName)
 	effectSound[effectName]->play();
 }
 
+void SoundSystem::AddBGMSound(const string& soundFilePath, const string& BGMName)
+{
+	BGMSound[BGMName] = new Sound;
+	BGMSoundBuffer[BGMName] = new SoundBuffer;
+
+	if (!BGMSoundBuffer[BGMName]->loadFromFile(soundFilePath))
+	{
+		cout << "not load sound -" << soundFilePath << endl;
+	}
+	BGMSound[BGMName]->setBuffer(*BGMSoundBuffer[BGMName]);
+	BGMSound[BGMName]->setVolume(BGMvolume);
+	BGMSound[BGMName]->setLoop(true); // 효과음은 반복되지않기때문에 
+}
+void SoundSystem::BGMPlay(const string& BGMName)
+{
+	if (nowPlayBGM.empty())
+	{
+		nowPlayBGM = BGMName;
+		BGMSound[BGMName]->play();
+	}
+	else
+	{
+		BGMSound[nowPlayBGM]->stop();
+		nowPlayBGM = BGMName;
+		BGMSound[BGMName]->play();
+	}
+}
+	
+
 void SoundSystem::VolumeDown()
 {
 	if (BGMvolume > 5.f)
 	{
-		BGMvolume -= this->volumeDistance;
-		BGMsound->setVolume(BGMvolume);
+		for (auto& bgm : BGMSound)
+		{
+			BGMvolume -= volumeDistance;
+			bgm.second->setVolume(BGMvolume);
+		}
 	}
 
 }
@@ -90,8 +116,11 @@ void SoundSystem::VolumeUp()
 {
 	if (BGMvolume < 200.f)
 	{
-		BGMvolume += this->volumeDistance;
-		BGMsound->setVolume(BGMvolume);
+		for (auto& bgm : BGMSound)
+		{
+			BGMvolume += this->volumeDistance;
+			bgm.second->setVolume(BGMvolume);
+		}
 	}
 	
 }
@@ -123,15 +152,15 @@ void SoundSystem::EffectVolumeUp()
 
 void SoundSystem::Play()
 {
-	BGMsound->play();
+	BGMSound[nowPlayBGM]->play();
 }
 
 void SoundSystem::Pause()
 {
-	BGMsound->pause();
+	BGMSound[nowPlayBGM]->pause();
 }
 
 void SoundSystem::Stop()
 {
-	BGMsound->stop();
+	BGMSound[nowPlayBGM]->stop();
 }

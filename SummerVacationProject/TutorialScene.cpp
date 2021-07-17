@@ -22,8 +22,8 @@ TutorialScene::~TutorialScene()
 
 void TutorialScene::Init()
 {
-	soundSystem = new SoundSystem("Sound/Stage1.wav", true);
-	soundSystem->Play();
+	soundSystem->BGMPlay("Stage1");
+	
 
 	Object* backGround = new BackGroundObject("Textures/Adventure Time with Finn and Jake/Background/Treehouseeembottom.png");
 	animationObjects.push_back(backGround);
@@ -63,6 +63,11 @@ void TutorialScene::Input(Event* e)
 			soundSystem->VolumeUp();
 			break;
 		}
+		case Keyboard::A:
+		{
+			soundSystem->EffectPlay("Click");
+			break;
+		}
 		default:
 			break;
 		}
@@ -70,7 +75,7 @@ void TutorialScene::Input(Event* e)
 	}
 	case Event::MouseButtonPressed:
 	{
-		soundSystem->EffectPlay("Click"); // Æ©Åä¸®¾ó¾À¿¡¼­´Â È¿°úÀ½ÀÌ ¾È³ª¿È 
+		soundSystem->EffectPlay("Click"); 
 		break;
 	}
 	default:

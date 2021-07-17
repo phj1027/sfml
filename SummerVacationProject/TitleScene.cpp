@@ -43,41 +43,56 @@ void TitleScene::Init()
 
 void TitleScene::Input(Event* e)
 {
-	switch (e->key.code)
+	switch (e->type)
 	{
-	case Keyboard::Escape: 
+	case Event::KeyPressed:
 	{
-		scenes->top()->EndScene(); // 지금 top은 titlescene자기자신 -> 자신을 없앤다는것
-		break;
-	}
-	
-	case Keyboard::Enter:
-	{
-		scenes->push(new TutorialScene(scenes, window,soundSystem));
-	
-		cout << "Tutorial Scene\n";
-		break;
-	}
-	case Keyboard::Q:
-	{
-		scenes->push(new PauseScene(scenes, window, soundSystem));
-		cout << "Pause Scene\n";
-		break;
-	}
-	case Keyboard::P:
-	{
-		soundSystem->VolumeDown();
-		break;
-	}
-	case Keyboard::O:
-	{
-		soundSystem->VolumeUp();
-		break;
-	}
+		switch (e->key.code)
+		{
+		case Keyboard::Escape:
+		{
+			scenes->top()->EndScene(); // 지금 top은 titlescene자기자신 -> 자신을 없앤다는것
+			break;
+		}
 
+		case Keyboard::Enter:
+		{
+			scenes->push(new TutorialScene(scenes, window, soundSystem));
+
+			cout << "Tutorial Scene\n";
+			break;
+		}
+		case Keyboard::Q:
+		{
+			scenes->push(new PauseScene(scenes, window, soundSystem));
+			cout << "Pause Scene\n";
+			break;
+		}
+		case Keyboard::P:
+		{
+			soundSystem->VolumeDown();
+			break;
+		}
+		case Keyboard::O:
+		{
+			soundSystem->VolumeUp();
+			break;
+		}
+	
+
+		default:
+			break;
+		}
+	case Event::MouseButtonPressed:
+	{
+		soundSystem->EffectPlay("Click");
+		break;
+	}
 	default:
 		break;
 	}
+	}
+	
 
 }
 
@@ -89,11 +104,8 @@ void TitleScene::Destroy()
 void TitleScene::Update(const float& deltaTime)
 {
 	if (mButtons["START"]->IsPressed())
-	{
-		soundSystem->EffectPlay("Click");
-		
+	{	
 		scenes->push(new TutorialScene(scenes, window, soundSystem));
-		soundSystem->Stop();
 	}
 	else if (mButtons["EXIT"]->IsPressed())
 	{
