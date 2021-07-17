@@ -20,17 +20,17 @@ SoundSystem::~SoundSystem()
 
 void SoundSystem::Init()
 {
-	sound = new Sound;
-	soundBuffer = new SoundBuffer;
+	BGMsound = new Sound;
+	BGMsoundBuffer = new SoundBuffer;
 
-	if (!soundBuffer->loadFromFile(filePath))
+	if (!BGMsoundBuffer->loadFromFile(filePath))
 	{
 		cout << "not load sound - " << filePath << endl;
 	}
 	
-	sound->setBuffer(*soundBuffer);   // soundBuffer가 텍스쳐 역할 sound가 스프라이트 역할
-	sound->setVolume(this->volume);
-	sound->setLoop(this->loop);
+	BGMsound->setBuffer(*BGMsoundBuffer);   // soundBuffer가 텍스쳐 역할 sound가 스프라이트 역할
+	BGMsound->setVolume(this->BGMvolume);
+	BGMsound->setLoop(this->loop);
 
 	// 초기화 되자마자 실행 , 내가 정한곳에서만 플레이하고싶으면 생략 
 	//sound->play();
@@ -39,8 +39,8 @@ void SoundSystem::Init()
 
 void SoundSystem::Destroy()
 {
-	DELETE(soundBuffer);
-	DELETE(sound);
+	DELETE(BGMsoundBuffer);
+	DELETE(BGMsound);
 
 	for (auto& s : effectSound)
 	{
@@ -53,6 +53,7 @@ void SoundSystem::Destroy()
 	{
 		DELETE(sb.second);
 	}
+
 	effectSoundBuffer.clear();
 }
 
@@ -75,17 +76,62 @@ void SoundSystem::EffectPlay(const string& effectName)
 	effectSound[effectName]->play();
 }
 
+void SoundSystem::VolumeDown()
+{
+	if (BGMvolume > 5.f)
+	{
+		BGMvolume -= this->volumeDistance;
+		BGMsound->setVolume(BGMvolume);
+	}
+
+}
+
+void SoundSystem::VolumeUp()
+{
+	if (BGMvolume < 200.f)
+	{
+		BGMvolume += this->volumeDistance;
+		BGMsound->setVolume(BGMvolume);
+	}
+	
+}
+
+void SoundSystem::EffectVolumeDown()
+{
+	if (effectVolume > 5.f)
+	{
+		for (auto& s : effectSound)
+		{
+			effectVolume -= volumeDistance;
+			s.second->setVolume(effectVolume);
+		}
+	}
+}
+
+void SoundSystem::EffectVolumeUp()
+{
+
+	if (effectVolume < 200.f)
+	{
+		for (auto& s : effectSound)
+		{
+			effectVolume += volumeDistance;
+			s.second->setVolume(effectVolume);
+		}
+	}
+}
+
 void SoundSystem::Play()
 {
-	sound->play();
+	BGMsound->play();
 }
 
 void SoundSystem::Pause()
 {
-	sound->pause();
+	BGMsound->pause();
 }
 
 void SoundSystem::Stop()
 {
-	sound->stop();
+	BGMsound->stop();
 }

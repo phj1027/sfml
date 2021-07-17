@@ -22,8 +22,8 @@ TutorialScene::~TutorialScene()
 
 void TutorialScene::Init()
 {
-	//soundSystem = new SoundSystem("Sound/Stage1.wav", true);
-	//soundSystem->Play();
+	soundSystem = new SoundSystem("Sound/Stage1.wav", true);
+	soundSystem->Play();
 
 	Object* backGround = new BackGroundObject("Textures/Adventure Time with Finn and Jake/Background/Treehouseeembottom.png");
 	animationObjects.push_back(backGround);
@@ -53,16 +53,24 @@ void TutorialScene::Input(Event* e)
 			cout << "Pause Scene\n";
 			break;
 		}
+		case Keyboard::P:
+		{
+			soundSystem->VolumeDown();
+			break;
+		}
+		case Keyboard::O:
+		{
+			soundSystem->VolumeUp();
+			break;
+		}
 		default:
 			break;
 		}
 		break;
 	}
-
 	case Event::MouseButtonPressed:
 	{
-		soundSystem->AddEffectSound("Sound/GetCoin.wav", "GetCoin");
-		soundSystem->EffectPlay("GetCoin"); // 재생 x 
+		soundSystem->EffectPlay("Click"); // 튜토리얼씬에서는 효과음이 안나옴 
 		break;
 	}
 	default:

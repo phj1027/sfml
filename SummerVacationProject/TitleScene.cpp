@@ -25,11 +25,6 @@ void TitleScene::Init()
 
 	animationObjects.push_back(new BackGroundObject("Textures/Adventure Time with Finn and Jake/Background/T.png"));
 
-	soundSystem = new SoundSystem("Sound/happybgm.wav", true);
-	soundSystem->Play();
-
-	
-
 	//Font* font = new Font;
 	//font->loadFromFile("Font/CookieRun_Bold.ttf");
 	//Text* text = new Text("Press Enter Key", *font);
@@ -69,10 +64,17 @@ void TitleScene::Input(Event* e)
 		cout << "Pause Scene\n";
 		break;
 	}
-	case Event::MouseButtonPressed:
+	case Keyboard::P:
 	{
+		soundSystem->VolumeDown();
 		break;
 	}
+	case Keyboard::O:
+	{
+		soundSystem->VolumeUp();
+		break;
+	}
+
 	default:
 		break;
 	}
@@ -88,7 +90,6 @@ void TitleScene::Update(const float& deltaTime)
 {
 	if (mButtons["START"]->IsPressed())
 	{
-		soundSystem->AddEffectSound("Sound/MouseClick.wav", "Click");
 		soundSystem->EffectPlay("Click");
 		
 		scenes->push(new TutorialScene(scenes, window, soundSystem));
